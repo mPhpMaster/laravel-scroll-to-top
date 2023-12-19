@@ -1,5 +1,4 @@
-(() => {
-    let config;
+((config) => {
     try {
         config = (window.config || config || {});
     } catch (e) {
@@ -122,4 +121,12 @@
     }
 
     getScrollElement().addEventListener("click", window.scrollToTopFunction);
-})();
+})(
+    (() => {
+        try {
+            return config;
+        } catch (e) {
+            return {};
+        }
+    })()
+);
